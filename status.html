@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance API By Smart Dev</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #ffffff, #e9ecef);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-healthy {
+            background-color: #28a745;
+        }
+        .status-error {
+            background-color: #dc3545;
+        }
+        .api-test-form {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        .result-box {
+            background-color: #f1f3f5;
+            padding: 1rem;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        .docs-section {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        .docs-section h3 {
+            color: #F0B90B; /* Binance yellow */
+        }
+        .docs-section pre {
+            background-color: #f1f3f5;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .docs-section .accordion-button {
+            background-color: #F0B90B;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .docs-section .accordion-button:not(.collapsed) {
+            background-color: #d4a017;
+            color: #ffffff;
+        }
+        .docs-section .accordion-item {
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .docs-section img {
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        footer {
+            background-color: #ffffff;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e9ecef;
+        }
+        footer img {
+            height: 20px;
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background-color: #F0B90B;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #d4a017;
+        }
+        /* Updated Footer Styles */
+        .footer-social a {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .footer-social a:hover {
+            color: #F0B90B;
+        }
+        .footer-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #555;
+            margin-top: 1rem;
+        }
+        .footer-text strong {
+            color: #F0B90B;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAgNTAuMDQ4YzEzLjI1IDAgMjQtMTAuNzQ2IDI0LTI0IDAtMTMuMjU0LTEwLjc1LTI0LTI0LTI0cy0yNCAxMC43NDYtMjQgMjRjMCAxMy4yNTQgMTAuNzUgMjQgMjQgMjR6IiBmaWxsPSIjRjBCOTBCIi8+PC9zdmc+" alt="Binance Logo">
+                Binance API By Smart Dev
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#status">Status</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#test">Test API</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#docs">Docs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Binance API By Smart Dev</h1>
+            <p class="lead text-muted">Your gateway to seamless P2P trading with Binance, powered by @ISmartCoder.</p>
+        </div>
+    </section>
+
+    <!-- Status Section -->
+    <section id="status" class="py-5">
+        <div class="container">
+            <h2 class="mb-4">API Status</h2>
+            <div class="card p-4">
+                <div id="status-content">
+                    <p><span class="status-indicator" id="status-indicator"></span>Status: <span id="status-text">Checking...</span></p>
+                    <p>Timestamp: <span id="status-timestamp">N/A</span></p>
+                    <p>Version: <span id="status-version">N/A</span></p>
+                    <p>Cache Size: <span id="status-cache">N/A</span></p>
+                    <p>Uptime: <span id="status-uptime">N/A</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Test Section -->
+    <section id="test" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4">Test the API</h2>
+            <div class="card api-test-form">
+                <form id="api-test-form">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="asset" class="form-label">Asset</label>
+                            <select id="asset" class="form-select" required>
+                                <option value="USDT" selected>USDT</option>
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                                <option value="BNB">BNB</option>
+                                <option value="BUSD">BUSD</option>
+                                <option value="ADA">ADA</option>
+                                <option value="DOT">DOT</option>
+                                <option value="MATIC">MATIC</option>
+                                <option value="SHIB">SHIB</option>
+                                <option value="DOGE">DOGE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pay_type" class="form-label">Fiat Currency</label>
+                            <select id="pay_type" class="form-select" required>
+                                <option value="BDT" selected>BDT</option>
+                                <option value="INR">INR</option>
+                                <option value="PKR">PKR</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="AED">AED</option>
+                                <option value="SAR">SAR</option>
+                                <option value="TRY">TRY</option>
+                                <option value="RUB">RUB</option>
+                                <option value="NGN">NGN</option>
+                                <option value="KES">KES</option>
+                                <option value="ZAR">ZAR</option>
+                                <option value="PHP">PHP</option>
+                                <option value="THB">THB</option>
+                                <option value="MYR">MYR</option>
+                                <option value="SGD">SGD</option>
+                                <option value="HKD">HKD</option>
+                                <option value="JPY">JPY</option>
+                                <option value="KRW">KRW</option>
+                                <option value="CNY">CNY</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pay_method" class="form-label">Payment Method</label>
+                            <select id="pay_method" class="form-select" required>
+                                <option value="ALL" selected>ALL</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="trade_type" class="form-label">Trade Type</label>
+                            <select id="trade_type" class="form-select" required>
+                                <option value="SELL" selected>SELL</option>
+                                <option value="BUY">BUY</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="limit" class="form-label">Limit (1-500)</label>
+                            <input type="number" id="limit" class="form-control" min="1" max="500" value="100" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Test API</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <h5>Response</h5>
+                    <pre id="api-response" class="result-box">No response yet. Submit the form to test the API.</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="py-5">
+        <div class="container">
+            <h2 class="mb-4">
+                API Documentation
+            </h2>
+            <div class="card docs-section">
+                <div class="accordion" id="docsAccordion">
+                    <!-- Health Endpoint -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="healthHeading">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#healthCollapse">
+                                GET /health
+                            </button>
+                        </h2>
+                        <div id="healthCollapse" class="accordion-collapse collapse show" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Description:</strong> Checks the health status of the API, providing information about its operational state, version, cache usage, and uptime.</p>
+                                <p><strong>Use Case:</strong> Use this endpoint to verify if the API is running correctly before making other requests. Ideal for monitoring and debugging.</p>
+                                <p><strong>Parameters:</strong> None</p>
+                                <p><strong>Example Request:</strong></p>
+                                <pre>GET /health</pre>
+                                <p><strong>Example Response:</strong></p>
+                                <pre>
+{
+  "status": "healthy",
+  "timestamp": "2025-07-05T20:25:00.123456",
+  "version": "2.0.0",
+  "cache_size": 5,
+  "uptime": 1234567.89
+}
+                                </pre>
+                                <p><strong>Response Fields:</strong></p>
+                                <ul>
+                                    <li><code>status</code>: Indicates if the API is "healthy" or not.</li>
+                                    <li><code>timestamp</code>: ISO 8601 timestamp of the response.</li>
+                                    <li><code>version</code>: API version (e.g., 2.0.0).</li>
+                                    <li><code>cache_size</code>: Number of cached responses.</li>
+                                    <li><code>uptime</code>: Time (in seconds) since the API started.</li>
+                                </ul>
+                                <p><strong>Notes:</strong></p>
+                                <ul>
+                                    <li>Call this endpoint periodically to ensure the API is responsive.</li>
+                                    <li>A non-200 status code or "status" not equal to "healthy" indicates an issue.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- P2P Data Endpoint -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="p2pHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p2pCollapse">
+                                GET /api/v1/p2p
+                            </button>
+                        </h2>
+                        <div id="p2pCollapse" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Description:</strong> Fetches P2P trading data from Binance, including seller details, prices, and payment methods for specified assets and fiat currencies.</p>
+                                <p><strong>Use Case:</strong> Retrieve real-time P2P offers for trading cryptocurrencies (e.g., USDT) with fiat (e.g., BDT) using specific payment methods (e.g., bKash).</p>
+                                <p><strong>Parameters:</strong></p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                            <th>Default</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>asset</code></td>
+                                            <td>String</td>
+                                            <td>Cryptocurrency (e.g., USDT, BTC, ETH). Supported: USDT, BTC, ETH, BNB, BUSD, ADA, DOT, MATIC, SHIB, DOGE.</td>
+                                            <td>USDT</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>pay_type</code></td>
+                                            <td>String</td>
+                                            <td>Fiat currency (e.g., BDT, USD). Supported: BDT, INR, PKR, USD, EUR, GBP, AED, SAR, TRY, RUB, NGN, KES, ZAR, PHP, THB, MYR, SGD, HKD, JPY, KRW, CNY.</td>
+                                            <td>BDT</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>pay_method</code></td>
+                                            <td>String</td>
+                                            <td>Payment method (e.g., BKASH, ALL). Depends on <code>pay_type</code> (e.g., BDT: BKASH, NAGAD, ROCKET, UPAY, BANK).</td>
+                                            <td>ALL</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>trade_type</code></td>
+                                            <td>String</td>
+                                            <td>Trade direction: BUY or SELL.</td>
+                                            <td>SELL</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>limit</code></td>
+                                            <td>Integer</td>
+                                            <td>Number of results to return (1-500).</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>sort_by</code></td>
+                                            <td>String</td>
+                                            <td>Sort results by: price, completion_rate, available_amount, monthly_orders.</td>
+                                            <td>price</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>order</code></td>
+                                            <td>String</td>
+                                            <td>Sort order: asc or desc.</td>
+                                            <td>asc</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>min_completion_rate</code></td>
+                                            <td>Float</td>
+                                            <td>Minimum seller completion rate (0-100).</td>
+                                            <td>None</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>min_orders</code></td>
+                                            <td>Integer</td>
+                                            <td>Minimum seller monthly orders.</td>
+                                            <td>None</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>online_only</code></td>
+                                            <td>Boolean</td>
+                                            <td>Show only online merchants (true/false).</td>
+                                            <td>false</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><strong>Example Request:</strong></p>
+                                <pre>GET /api/v1/p2p?asset=USDT&pay_type=BDT&pay_method=BKASH&trade_type=SELL&limit=100</pre>
+                                <p><strong>Example Response:</strong></p>
+                                <pre>
+{
+  "success": true,
+  "data": [
+    {
+      "id": "12345",
+      "seller_name": "Seller1",
+      "price": 120.5,
+      "fiat_unit": "BDT",
+      "available_amount": 1000.0,
+      "min_order_amount": 500.0,
+      "max_order_amount": 5000.0,
+      "completion_rate": 95.5,
+      "monthly_orders": 50,
+      "payment_methods": ["bKash"],
+      "user_type": "merchant",
+      "online_status": "online"
+    }
+  ],
+  "count": 1,
+  "total_found": 1,
+  "total_sellers": 1,
+  "time_taken": 0.123,
+  "trade_type": "SELL",
+  "api_dev": "@ISmartCoder",
+  "updates_channel": "t.me/TheSmartDev",
+  "statistics": {
+    "avg_price": 120.5,
+    "min_price": 119.0,
+    "max_price": 122.0,
+    "total_available": 1000.0
+  },
+  "parameters": {
+    "asset": "USDT",
+    "pay_type": "BDT",
+    "pay_method": "BKASH",
+    "trade_type": "SELL",
+    "limit": 100,
+    "sort_by": "price",
+    "order": "asc",
+    "filters_applied": {}
+  },
+  "timestamp": "2025-07-05T20:25:00.123456",
+  "cache_status": "served"
+}
+                                </pre>
+                                <p><strong>Response Fields:</strong></p>
+                                <ul>
+                                    <li><code>success</code>: Boolean indicating request success.</li>
+                                    <li><code>data</code>: Array of seller objects with details (id, seller_name, price, etc.).</li>
+                                    <li><code>count</code>: Number of sellers returned.</li>
+                                    <li><code>total_found</code>: Total sellers matching criteria.</li>
+                                    <li><code>total_sellers</code>: Same as total_found.</li>
+                                    <li><code>time_taken</code>: Time (seconds) to process the request.</li>
+                                    <li><code>trade_type</code>: Requested trade type (BUY/SELL).</li>
+                                    <li><code>api_dev</code>: Developer handle (@ISmartCoder).</li>
+                                    <li><code>updates_channel</code>: Telegram channel for updates.</li>
+                                    <li><code>statistics</code>: Aggregated stats (avg_price, min_price, max_price, total_available).</li>
+                                    <li><code>parameters</code>: Echo of request parameters.</li>
+                                    <li><code>timestamp</code>: ISO 8601 timestamp.</li>
+                                    <li><code>cache_status</code>: Indicates if response was cached.</li>
+                                </ul>
+                                <p><strong>Notes:</strong></p>
+                                <ul>
+                                    <li>Use <code>limit</code> to control response size (max 500).</li>
+                                    <li>Responses are cached for 30 seconds to improve performance.</li>
+                                    <li>Invalid parameters return a 400 error with details.</li>
+                                    <li>Try the test form above to experiment with parameters.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods Endpoint -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="methodsHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#methodsCollapse">
+                                GET /api/v1/p2p/methods
+                            </button>
+                        </h2>
+                        <div id="methodsCollapse" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Description:</strong> Retrieves the list of supported payment methods for each fiat currency.</p>
+                                <p><strong>Use Case:</strong> Use this to populate payment method options in your application based on the selected fiat currency.</p>
+                                <p><strong>Parameters:</strong> None</p>
+                                <p><strong>Example Request:</strong></p>
+                                <pre>GET /api/v1/p2p/methods</pre>
+                                <p><strong>Example Response:</strong></p>
+                                <pre>
+{
+  "success": true,
+  "data": {
+    "BDT": {
+      "BKASH": "bKash",
+      "NAGAD": "Nagad",
+      "ROCKET": "Rocket",
+      "UPAY": "Upay",
+      "BANK": "BANK"
+    },
+    "USD": {
+      "WISE": "Wise",
+      "PAYPAL": "Paypal",
+      "BANK": "BANK",
+      "ZELLE": "Zelle"
+    },
+    ...
+  },
+  "timestamp": "2025-07-05T20:25:00.123456"
+}
+                                </pre>
+                                <p><strong>Response Fields:</strong></p>
+                                <ul>
+                                    <li><code>success</code>: Boolean indicating request success.</li>
+                                    <li><code>data</code>: Object mapping fiat currencies to their payment methods.</li>
+                                    <li><code>timestamp</code>: ISO 8601 timestamp.</li>
+                                </ul>
+                                <p><strong>Notes:</strong></p>
+                                <ul>
+                                    <li>Each fiat currency has a unique set of payment methods.</li>
+                                    <li>Use this endpoint to validate <code>pay_method</code> in P2P requests.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Currencies Endpoint -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="currenciesHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#currenciesCollapse">
+                                GET /api/v1/p2p/currencies
+                            </button>
+                        </h2>
+                        <div id="currenciesCollapse" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Description:</strong> Retrieves the list of supported cryptocurrencies, fiat currencies, and trade types.</p>
+                                <p><strong>Use Case:</strong> Use this to populate dropdowns or validate inputs for <code>asset</code>, <code>pay_type</code>, and <code>trade_type</code> in your application.</p>
+                                <p><strong>Parameters:</strong> None</p>
+                                <p><strong>Example Request:</strong></p>
+                                <pre>GET /api/v1/p2p/currencies</pre>
+                                <p><strong>Example Response:</strong></p>
+                                <pre>
+{
+  "success": true,
+  "data": {
+    "crypto_assets": ["USDT", "BTC", "ETH", "BNB", "BUSD", "ADA", "DOT", "MATIC", "SHIB", "DOGE"],
+    "fiat_currencies": ["BDT", "INR", "PKR", "USD", "EUR", "GBP", "AED", "SAR", "TRY", "RUB", "NGN", "KES", "ZAR", "PHP", "THB", "MYR", "SGD", "HKD", "JPY", "KRW", "CNY"],
+    "trade_types": ["BUY", "SELL"]
+  },
+  "total_currencies": 21,
+  "total_assets": 10,
+  "timestamp": "2025-07-05T20:25:00.123456"
+}
+                                </pre>
+                                <p><strong>Response Fields:</strong></p>
+                                <ul>
+                                    <li><code>success</code>: Boolean indicating request success.</li>
+                                    <li><code>data</code>: Object containing arrays of supported assets, currencies, and trade types.</li>
+                                    <li><code>total_currencies</code>: Count of fiat currencies.</li>
+                                    <li><code>total_assets</code>: Count of crypto assets.</li>
+                                    <li><code>timestamp</code>: ISO 8601 timestamp.</li>
+                                </ul>
+                                <p><strong>Notes:</strong></p>
+                                <ul>
+                                    <li>Use this endpoint to initialize your app’s configuration.</li>
+                                    <li>Combine with <code>/api/v1/p2p/methods</code> for full input validation.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgNSAzIj48cGF0aCBmaWxsPSIjMDA3MTMyIiBkPSJNMCwwIDUsMCB2MyBILTB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUsMCAwLDAgdi0zIEgtNXoiLz48Y2lyY2xlIGN4PSIxLjgiIGN5PSIxLjUiIHI9IjEuMiIgZmlsbD0iI2NlMDAwMCIvPjwvc3ZnPg==" alt="BD Flag">
+                    Developed with ❤️ By @ISmartCoder From Bangladesh
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="footer-social mb-3">
+                <a href="https://github.com/TheSmartDevs" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://facebook.com/abirxdhackz" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/abirxdhackz" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/abirxdhackz" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/@abirxdhackz" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/ISmartCoder" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            </div>
+            <p class="footer-text">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgNSAzIj48cGF0aCBmaWxsPSIjMDA3MTMyIiBkPSJNMCwwIDUsMCB2MyBILTB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUsMCAwLDAgdi0zIEgtNXoiLz48Y2lyY2xlIGN4PSIxLjgiIGN5PSIxLjUiIHI9IjEuMiIgZmlsbD0iI2NlMDAwMCIvPjwvc3ZnPg==" alt="BD Flag">
+                Crafted with <strong>passion</strong> by <a href="https://t.me/ISmartCoder" target="_blank">@ISmartCoder</a> | Join our <strong>community</strong>: <a href="https://t.me/TheSmartDev" target="_blank">t.me/TheSmartDev</a>
+            </p>
+            <p class="text-muted mt-2">© 2025 Binance API By Smart Dev. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Payment methods mapping (from API)
+        const PAYMENT_METHODS = {
+            "BDT": ["BKASH", "NAGAD", "ROCKET", "UPAY", "BANK"],
+            "INR": ["UPI", "IMPS", "PAYTM", "PHONEPE", "GPAY", "BANK"],
+            "PKR": ["EASYPAISA", "JAZZCASH", "BANK"],
+            "USD": ["WISE", "PAYPAL", "BANK", "ZELLE"],
+            "EUR": ["SEPA", "WISE", "BANK"],
+            "GBP": ["FASTERPAYMENTS", "WISE", "BANK"],
+            "AED": ["BANK", "CIB"],
+            "SAR": ["BANK"],
+            "TRY": ["BANK", "PAPARA", "ZIRAAT"],
+            "RUB": ["BANK", "TINKOFF", "SBERBANK"],
+            "NGN": ["BANK"],
+            "KES": ["MPESA", "BANK"],
+            "ZAR": ["BANK"],
+            "PHP": ["GCASH", "PAYMAYA", "BANK"],
+            "THB": ["BANK"],
+            "MYR": ["BANK"],
+            "SGD": ["BANK"],
+            "HKD": ["BANK"],
+            "JPY": ["BANK"],
+            "KRW": ["BANK"],
+            "CNY": ["BANK", "ALIPAY", "WECHAT"]
+        };
+
+        // Update payment methods based on selected fiat currency
+        function updatePaymentMethods() {
+            const payType = document.getElementById('pay_type').value;
+            const payMethodSelect = document.getElementById('pay_method');
+            payMethodSelect.innerHTML = '<option value="ALL" selected>ALL</option>';
+            if (PAYMENT_METHODS[payType]) {
+                PAYMENT_METHODS[payType].forEach(method => {
+                    const option = document.createElement('option');
+                    option.value = method;
+                    option.textContent = method;
+                    payMethodSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Check API health status
+        async function checkApiStatus() {
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+                const statusIndicator = document.getElementById('status-indicator');
+                const statusText = document.getElementById('status-text');
+                const statusTimestamp = document.getElementById('status-timestamp');
+                const statusVersion = document.getElementById('status-version');
+                const statusCache = document.getElementById('status-cache');
+                const statusUptime = document.getElementById('status-uptime');
+
+                if (data.status === 'healthy') {
+                    statusIndicator.classList.add('status-healthy');
+                    statusText.textContent = 'Healthy';
+                } else {
+                    statusIndicator.classList.add('status-error');
+                    statusText.textContent = 'Error';
+                }
+                statusTimestamp.textContent = data.timestamp;
+                statusVersion.textContent = data.version;
+                statusCache.textContent = data.cache_size;
+                statusUptime.textContent = `${Math.floor(data.uptime / 3600)} hours`;
+            } catch (error) {
+                document.getElementById('status-indicator').classList.add('status-error');
+                document.getElementById('status-text').textContent = 'Failed to connect';
+            }
+        }
+
+        // Handle API test form submission
+        document.getElementById('api-test-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const asset = document.getElementById('asset').value;
+            const payType = document.getElementById('pay_type').value;
+            const payMethod = document.getElementById('pay_method').value;
+            const tradeType = document.getElementById('trade_type').value;
+            const limit = document.getElementById('limit').value;
+
+            const url = `/api/v1/p2p?asset=${asset}&pay_type=${payType}&pay_method=${payMethod}&trade_type=${tradeType}&limit=${limit}`;
+            const responseBox = document.getElementById('api-response');
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                responseBox.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseBox.textContent = `Error: ${error.message}`;
+            }
+        });
+
+        // Initialize
+        document.getElementById('pay_type').addEventListener('change', updatePaymentMethods);
+        updatePaymentMethods();
+        checkApiStatus();
+    </script>
+</body>
+</html>
