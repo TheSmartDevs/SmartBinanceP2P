@@ -27,6 +27,16 @@
             padding: 4rem 0;
             text-align: center;
         }
+        .hero .developer-credit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .hero .developer-credit img {
+            height: 40px;
+            margin-left: 10px;
+        }
         .card {
             border: none;
             border-radius: 12px;
@@ -92,20 +102,11 @@
             margin-bottom: 1rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .docs-section img {
-            height: 24px;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
         footer {
             background-color: #ffffff;
             padding: 3rem 0;
             margin-top: 3rem;
             border-top: 1px solid #e9ecef;
-        }
-        footer img {
-            height: 20px;
-            vertical-align: middle;
         }
         .btn-primary {
             background-color: #F0B90B;
@@ -115,7 +116,6 @@
         .btn-primary:hover {
             background-color: #d4a017;
         }
-        /* Updated Footer Styles */
         .footer-social a {
             color: #333;
             font-size: 1.5rem;
@@ -134,6 +134,58 @@
         .footer-text strong {
             color: #F0B90B;
         }
+        /* Advertisement Section */
+        .ad-section {
+            background-color: #ffffff;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #00C4B4;
+            transition: transform 0.3s ease;
+        }
+        .ad-section:hover {
+            transform: translateY(-3px);
+        }
+        .ad-section h2 {
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+            font-size: 1.8rem;
+        }
+        .ad-section p {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            margin-bottom: 1.25rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .ad-section .btn {
+            background-color: #00C4B4;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .ad-section .btn:hover {
+            background-color: #00a89a;
+            transform: scale(1.03);
+        }
+        .ad-section .telegram-icon {
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -141,7 +193,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAgNTAuMDQ4YzEzLjI1IDAgMjQtMTAuNzQ2IDI0LTI0IDAtMTMuMjU0LTEwLjc1LTI0LTI0LTI0cy0yNCAxMC43NDYtMjQgMjRjMCAxMy4yNTQgMTAuNzUgMjQgMjQgMjR6IiBmaWxsPSIjRjBCOTBCIi8+PC9zdmc+" alt="Binance Logo">
+                <img src="https://kurigram.live/assets/pyro.gif" alt="Pyro Animation">
                 Binance API By Smart Dev
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -160,6 +212,10 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <div class="developer-credit">
+                <span>API Dev: <a href="https://t.me/ISmartCoder" target="_blank">@ISmartCoder</a></span>
+                <img src="https://kurigram.live/assets/pyro.gif" alt="Pyro Animation">
+            </div>
             <h1 class="display-4 fw-bold">Binance API By Smart Dev</h1>
             <p class="lead text-muted">Your gateway to seamless P2P trading with Binance, powered by @ISmartCoder.</p>
         </div>
@@ -206,14 +262,23 @@
                         <div class="col-md-4">
                             <label for="pay_type" class="form-label">Fiat Currency</label>
                             <select id="pay_type" class="form-select" required>
+                                <option value="BHD">BHD</option>
+                                <option value="AED">AED</option>
+                                <option value="SAR">SAR</option>
+                                <option value="EGP">EGP</option>
+                                <option value="JOD">JOD</option>
+                                <option value="KWD">KWD</option>
+                                <option value="LBP">LBP</option>
+                                <option value="MAD">MAD</option>
+                                <option value="OMR">OMR</option>
+                                <option value="QAR">QAR</option>
+                                <option value="TND">TND</option>
                                 <option value="BDT" selected>BDT</option>
                                 <option value="INR">INR</option>
                                 <option value="PKR">PKR</option>
                                 <option value="USD">USD</option>
                                 <option value="EUR">EUR</option>
                                 <option value="GBP">GBP</option>
-                                <option value="AED">AED</option>
-                                <option value="SAR">SAR</option>
                                 <option value="TRY">TRY</option>
                                 <option value="RUB">RUB</option>
                                 <option value="NGN">NGN</option>
@@ -227,6 +292,22 @@
                                 <option value="JPY">JPY</option>
                                 <option value="KRW">KRW</option>
                                 <option value="CNY">CNY</option>
+                                <option value="VND">VND</option>
+                                <option value="IDR">IDR</option>
+                                <option value="BRL">BRL</option>
+                                <option value="ARS">ARS</option>
+                                <option value="CLP">CLP</option>
+                                <option value="COP">COP</option>
+                                <option value="MXN">MXN</option>
+                                <option value="PEN">PEN</option>
+                                <option value="GHS">GHS</option>
+                                <option value="UGX">UGX</option>
+                                <option value="TZS">TZS</option>
+                                <option value="LRD">LRD</option>
+                                <option value="SLL">SLL</option>
+                                <option value="GMD">GMD</option>
+                                <option value="MRO">MRO</option>
+                                <option value="CVE">CVE</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -259,22 +340,32 @@
         </div>
     </section>
 
+    <!-- Advertisement Section -->
+    <section class="ad-section">
+        <div class="container">
+            <h2>Need Custom Telegram Bots & APIS ? 🧐</h2>
+            <p>Supercharge your trading with custom-built bots and APIs in Python, PHP, Node.js, and beyond. Partner with us to create innovative, high-performance solutions tailored to your needs.</p>
+            <a href="https://t.me/ISmartCoder" target="_blank" class="btn">
+                Connect with @ISmartCoder
+                <i class="fab fa-telegram telegram-icon"></i>
+            </a>
+        </div>
+    </section>
+
     <!-- Documentation Section -->
     <section id="docs" class="py-5">
         <div class="container">
-            <h2 class="mb-4">
-                API Documentation
-            </h2>
+            <h2 class="mb-4">API Documentation</h2>
             <div class="card docs-section">
                 <div class="accordion" id="docsAccordion">
                     <!-- Health Endpoint -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="healthHeading">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#healthCollapse">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#healthCollapse">
                                 GET /health
                             </button>
                         </h2>
-                        <div id="healthCollapse" class="accordion-collapse collapse show" data-bs-parent="#docsAccordion">
+                        <div id="healthCollapse" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
                             <div class="accordion-body">
                                 <p><strong>Description:</strong> Checks the health status of the API, providing information about its operational state, version, cache usage, and uptime.</p>
                                 <p><strong>Use Case:</strong> Use this endpoint to verify if the API is running correctly before making other requests. Ideal for monitoring and debugging.</p>
@@ -285,7 +376,7 @@
                                 <pre>
 {
   "status": "healthy",
-  "timestamp": "2025-07-05T20:25:00.123456",
+  "timestamp": "2025-07-18T08:26:00.123456+06:00",
   "version": "2.0.0",
   "cache_size": 5,
   "uptime": 1234567.89
@@ -339,7 +430,7 @@
                                         <tr>
                                             <td><code>pay_type</code></td>
                                             <td>String</td>
-                                            <td>Fiat currency (e.g., BDT, USD). Supported: BDT, INR, PKR, USD, EUR, GBP, AED, SAR, TRY, RUB, NGN, KES, ZAR, PHP, THB, MYR, SGD, HKD, JPY, KRW, CNY.</td>
+                                            <td>Fiat currency (e.g., BDT, USD). Supported: BHD, AED, SAR, EGP, JOD, KWD, LBP, MAD, OMR, QAR, TND, BDT, INR, PKR, USD, EUR, GBP, TRY, RUB, NGN, KES, ZAR, PHP, THB, MYR, SGD, HKD, JPY, KRW, CNY, VND, IDR, BRL, ARS, CLP, COP, MXN, PEN, GHS, UGX, TZS, LRD, SLL, GMD, MRO, CVE.</td>
                                             <td>BDT</td>
                                         </tr>
                                         <tr>
@@ -437,7 +528,7 @@
     "order": "asc",
     "filters_applied": {}
   },
-  "timestamp": "2025-07-05T20:25:00.123456",
+  "timestamp": "2025-07-18T08:26:00.123456+06:00",
   "cache_status": "served"
 }
                                 </pre>
@@ -487,22 +578,12 @@
 {
   "success": true,
   "data": {
-    "BDT": {
-      "BKASH": "bKash",
-      "NAGAD": "Nagad",
-      "ROCKET": "Rocket",
-      "UPAY": "Upay",
-      "BANK": "BANK"
-    },
-    "USD": {
-      "WISE": "Wise",
-      "PAYPAL": "Paypal",
-      "BANK": "BANK",
-      "ZELLE": "Zelle"
-    },
+    "BHD": ["BANK", "BBK", "DENIZBANK", "AIC", "CASHU", "MONEYGRAM"],
+    "BDT": ["BKASH", "NAGAD", "ROCKET", "UPAY", "BANK"],
+    "USD": ["WISE", "PAYPAL", "BANK", "ZELLE"],
     ...
   },
-  "timestamp": "2025-07-05T20:25:00.123456"
+  "timestamp": "2025-07-18T08:26:00.123456+06:00"
 }
                                 </pre>
                                 <p><strong>Response Fields:</strong></p>
@@ -540,12 +621,12 @@
   "success": true,
   "data": {
     "crypto_assets": ["USDT", "BTC", "ETH", "BNB", "BUSD", "ADA", "DOT", "MATIC", "SHIB", "DOGE"],
-    "fiat_currencies": ["BDT", "INR", "PKR", "USD", "EUR", "GBP", "AED", "SAR", "TRY", "RUB", "NGN", "KES", "ZAR", "PHP", "THB", "MYR", "SGD", "HKD", "JPY", "KRW", "CNY"],
+    "fiat_currencies": ["BHD", "AED", "SAR", "EGP", "JOD", "KWD", "LBP", "MAD", "OMR", "QAR", "TND", "BDT", "INR", "PKR", "USD", "EUR", "GBP", "TRY", "RUB", "NGN", "KES", "ZAR", "PHP", "THB", "MYR", "SGD", "HKD", "JPY", "KRW", "CNY", "VND", "IDR", "BRL", "ARS", "CLP", "COP", "MXN", "PEN", "GHS", "UGX", "TZS", "LRD", "SLL", "GMD", "MRO", "CVE"],
     "trade_types": ["BUY", "SELL"]
   },
-  "total_currencies": 21,
+  "total_currencies": 45,
   "total_assets": 10,
-  "timestamp": "2025-07-05T20:25:00.123456"
+  "timestamp": "2025-07-18T08:26:00.123456+06:00"
 }
                                 </pre>
                                 <p><strong>Response Fields:</strong></p>
@@ -566,8 +647,7 @@
                     </div>
                 </div>
                 <p class="mt-4">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgNSAzIj48cGF0aCBmaWxsPSIjMDA3MTMyIiBkPSJNMCwwIDUsMCB2MyBILTB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUsMCAwLDAgdi0zIEgtNXoiLz48Y2lyY2xlIGN4PSIxLjgiIGN5PSIxLjUiIHI9IjEuMiIgZmlsbD0iI2NlMDAwMCIvPjwvc3ZnPg==" alt="BD Flag">
-                    Developed with ❤️ By @ISmartCoder From Bangladesh
+                    Developed with ❤️ By @ISmartCoder
                 </p>
             </div>
         </div>
@@ -585,7 +665,6 @@
                 <a href="https://t.me/ISmartCoder" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
             </div>
             <p class="footer-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgNSAzIj48cGF0aCBmaWxsPSIjMDA3MTMyIiBkPSJNMCwwIDUsMCB2MyBILTB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUsMCAwLDAgdi0zIEgtNXoiLz48Y2lyY2xlIGN4PSIxLjgiIGN5PSIxLjUiIHI9IjEuMiIgZmlsbD0iI2NlMDAwMCIvPjwvc3ZnPg==" alt="BD Flag">
                 Crafted with <strong>passion</strong> by <a href="https://t.me/ISmartCoder" target="_blank">@ISmartCoder</a> | Join our <strong>community</strong>: <a href="https://t.me/TheSmartDev" target="_blank">t.me/TheSmartDev</a>
             </p>
             <p class="text-muted mt-2">© 2025 Binance API By Smart Dev. All rights reserved.</p>
@@ -598,27 +677,52 @@
     <script>
         // Payment methods mapping (from API)
         const PAYMENT_METHODS = {
+            "BHD": ["BANK", "BBK", "DENIZBANK", "AIC", "CASHU", "MONEYGRAM"],
+            "AED": ["BANK", "CIB", "CASHU", "MONEYGRAM"],
+            "SAR": ["BANK", "CASHU", "MONEYGRAM"],
+            "EGP": ["BANK", "CASHU", "MONEYGRAM"],
+            "JOD": ["BANK", "CASHU", "MONEYGRAM"],
+            "KWD": ["BANK", "CASHU", "MONEYGRAM"],
+            "LBP": ["BANK", "CASHU", "MONEYGRAM"],
+            "MAD": ["BANK", "CASHU", "MONEYGRAM"],
+            "OMR": ["BANK", "CASHU", "MONEYGRAM"],
+            "QAR": ["BANK", "CASHU", "MONEYGRAM"],
+            "TND": ["BANK", "CASHU", "MONEYGRAM"],
             "BDT": ["BKASH", "NAGAD", "ROCKET", "UPAY", "BANK"],
             "INR": ["UPI", "IMPS", "PAYTM", "PHONEPE", "GPAY", "BANK"],
             "PKR": ["EASYPAISA", "JAZZCASH", "BANK"],
             "USD": ["WISE", "PAYPAL", "BANK", "ZELLE"],
             "EUR": ["SEPA", "WISE", "BANK"],
             "GBP": ["FASTERPAYMENTS", "WISE", "BANK"],
-            "AED": ["BANK", "CIB"],
-            "SAR": ["BANK"],
             "TRY": ["BANK", "PAPARA", "ZIRAAT"],
             "RUB": ["BANK", "TINKOFF", "SBERBANK"],
-            "NGN": ["BANK"],
+            "NGN": ["BANK", "OPAY", "PALMPAY"],
             "KES": ["MPESA", "BANK"],
-            "ZAR": ["BANK"],
+            "ZAR": ["BANK", "CAPITEC", "FNB"],
             "PHP": ["GCASH", "PAYMAYA", "BANK"],
-            "THB": ["BANK"],
-            "MYR": ["BANK"],
-            "SGD": ["BANK"],
-            "HKD": ["BANK"],
+            "THB": ["BANK", "PROMPTPAY"],
+            "MYR": ["BANK", "TOUCHNGO"],
+            "SGD": ["BANK", "PAYNOW"],
+            "HKD": ["BANK", "FPS"],
             "JPY": ["BANK"],
             "KRW": ["BANK"],
-            "CNY": ["BANK", "ALIPAY", "WECHAT"]
+            "CNY": ["BANK", "ALIPAY", "WECHAT"],
+            "VND": ["BANK", "MOMO", "ZALOPAY"],
+            "IDR": ["BANK", "GOPAY", "OVO", "DANA"],
+            "BRL": ["BANK", "PIX"],
+            "ARS": ["BANK", "MERCADOPAGO"],
+            "CLP": ["BANK"],
+            "COP": ["BANK", "NEQUI", "DAVIPLATA"],
+            "MXN": ["BANK", "SPEI"],
+            "PEN": ["BANK", "YAPE", "PLIN"],
+            "GHS": ["BANK", "MTN", "VODAFONE"],
+            "UGX": ["BANK", "AIRTEL", "MTN"],
+            "TZS": ["BANK", "MPESA", "TIGO"],
+            "LRD": ["BANK", "MOOV"],
+            "SLL": ["BANK", "ORANGE"],
+            "GMD": ["BANK", "QMONEY"],
+            "MRO": ["BANK"],
+            "CVE": ["BANK"]
         };
 
         // Update payment methods based on selected fiat currency
