@@ -34,6 +34,65 @@ cache_lock = threading.Lock()
 CACHE_DURATION = 30
 
 PAYMENT_METHODS = {
+    "BHD": {
+        "BANK": "BANK",
+        "BBK": "Bank of Bahrain and Kuwait B.S.C.",
+        "DENIZBANK": "DenizBank A.Ş. Bahrain",
+        "AIC": "The Arab Investment Company S.A.A.",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "AED": {
+        "BANK": "BANK",
+        "CIB": "CIB",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "SAR": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "EGP": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "JOD": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "KWD": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "LBP": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "MAD": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "OMR": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "QAR": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
+    "TND": {
+        "BANK": "BANK",
+        "CASHU": "CashU",
+        "MONEYGRAM": "MoneyGram"
+    },
     "BDT": {
         "BKASH": "bKash",
         "NAGAD": "Nagad",
@@ -70,13 +129,6 @@ PAYMENT_METHODS = {
         "WISE": "Wise",
         "BANK": "BANK"
     },
-    "AED": {
-        "BANK": "BANK",
-        "CIB": "CIB"
-    },
-    "SAR": {
-        "BANK": "BANK"
-    },
     "TRY": {
         "BANK": "BANK",
         "PAPARA": "Papara",
@@ -88,14 +140,18 @@ PAYMENT_METHODS = {
         "SBERBANK": "Sberbank"
     },
     "NGN": {
-        "BANK": "BANK"
+        "BANK": "BANK",
+        "OPAY": "Opay",
+        "PALMPAY": "PalmPay"
     },
     "KES": {
         "MPESA": "M-Pesa",
         "BANK": "BANK"
     },
     "ZAR": {
-        "BANK": "BANK"
+        "BANK": "BANK",
+        "CAPITEC": "Capitec",
+        "FNB": "FNB"
     },
     "PHP": {
         "GCASH": "GCash",
@@ -103,16 +159,20 @@ PAYMENT_METHODS = {
         "BANK": "BANK"
     },
     "THB": {
-        "BANK": "BANK"
+        "BANK": "BANK",
+        "PROMPTPAY": "PromptPay"
     },
     "MYR": {
-        "BANK": "BANK"
+        "BANK": "BANK",
+        "TOUCHNGO": "TouchNGo"
     },
     "SGD": {
-        "BANK": "BANK"
+        "BANK": "BANK",
+        "PAYNOW": "PayNow"
     },
     "HKD": {
-        "BANK": "BANK"
+        "BANK": "BANK",
+        "FPS": "FPS"
     },
     "JPY": {
         "BANK": "BANK"
@@ -124,6 +184,75 @@ PAYMENT_METHODS = {
         "BANK": "BANK",
         "ALIPAY": "Alipay",
         "WECHAT": "WeChatPay"
+    },
+    "VND": {
+        "BANK": "BANK",
+        "MOMO": "MoMo",
+        "ZALOPAY": "ZaloPay"
+    },
+    "IDR": {
+        "BANK": "BANK",
+        "GOPAY": "GoPay",
+        "OVO": "OVO",
+        "DANA": "DANA"
+    },
+    "BRL": {
+        "BANK": "BANK",
+        "PIX": "Pix"
+    },
+    "ARS": {
+        "BANK": "BANK",
+        "MERCADOPAGO": "MercadoPago"
+    },
+    "CLP": {
+        "BANK": "BANK"
+    },
+    "COP": {
+        "BANK": "BANK",
+        "NEQUI": "Nequi",
+        "DAVIPLATA": "DaviPlata"
+    },
+    "MXN": {
+        "BANK": "BANK",
+        "SPEI": "SPEI"
+    },
+    "PEN": {
+        "BANK": "BANK",
+        "YAPE": "Yape",
+        "PLIN": "Plin"
+    },
+    "GHS": {
+        "BANK": "BANK",
+        "MTN": "MTN Mobile Money",
+        "VODAFONE": "Vodafone Cash"
+    },
+    "UGX": {
+        "BANK": "BANK",
+        "AIRTEL": "Airtel Money",
+        "MTN": "MTN Mobile Money"
+    },
+    "TZS": {
+        "BANK": "BANK",
+        "MPESA": "M-Pesa",
+        "TIGO": "Tigo Pesa"
+    },
+    "LRD": {
+        "BANK": "BANK",
+        "MOOV": "Moov Money"
+    },
+    "SLL": {
+        "BANK": "BANK",
+        "ORANGE": "Orange Money"
+    },
+    "GMD": {
+        "BANK": "BANK",
+        "QMoney": "QMoney"
+    },
+    "MRO": {
+        "BANK": "BANK"
+    },
+    "CVE": {
+        "BANK": "BANK"
     }
 }
 
